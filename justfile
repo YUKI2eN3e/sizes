@@ -58,7 +58,7 @@ build: _setup_poetry
 
 # Install program using pipx
 install: build
-	@py -m pipx install ./dist/`ls -t dist | head -n2 | grep whl`
+	@py -m pipx install "./dist/`ls -t dist | head -n2 | grep whl`[all]"
 
 # Uninstall program using pipx
 uninstall:
