@@ -1,5 +1,6 @@
 import argparse
 from dataclasses import dataclass
+from importlib import metadata
 from os import path
 from sys import argv
 
@@ -41,12 +42,13 @@ class CliArgs:
 
 
 def get_args() -> CliArgs:
+    prog_name = path.basename(path.dirname(__file__))
     if colourful:
         parser = argparse.ArgumentParser(
-            prog="sizes", formatter_class=RichHelpFormatter
+            prog=prog_name, formatter_class=RichHelpFormatter
         )
     else:
-        parser = argparse.ArgumentParser(prog="sizes")
+        parser = argparse.ArgumentParser(prog=prog_name)
 
     type_options = parser.add_argument_group("Type")
     type_options.add_argument(
@@ -82,7 +84,14 @@ def get_args() -> CliArgs:
         dest="ordered",
         action="store_true",
         default=False,
-        help="sort from descending order",
+        help="sort in descending order",
+    )
+
+    parser.add_argument(
+        "-v",
+        "--version",
+        action="version",
+        version=f"{prog_name} v{metadata.version(prog_name)}",
     )
 
     if colourful:
