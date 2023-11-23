@@ -3,7 +3,7 @@ Get File/Directory sizes in the terminal.
 
 ## Install
 ```bash
-pipx install "sizes[all]"
+pipx install "sizes-cli[all]"
 ```
 
 OR

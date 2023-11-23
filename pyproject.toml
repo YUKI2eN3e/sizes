@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "sizes"
+name = "sizes-cli"
 version = "0.2.1"
 description = ""
 authors = ["Yuki Nagato <37764578+YUKI2eN3e@users.noreply.github.com>"]

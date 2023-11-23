@@ -91,7 +91,7 @@ def get_args() -> CliArgs:
         "-v",
         "--version",
         action="version",
-        version=f"{prog_name} v{metadata.version(prog_name)}",
+        version=f"{prog_name} v{metadata.version(f'{prog_name}_cli')}",
     )
 
     if colourful:
