@@ -7,7 +7,7 @@ tasks:
 	@just --list --unsorted
 
 _setup_poetry:
-	poetry install
+	@poetry install -E all
 
 # SetUp project
 setup: _setup_poetry
@@ -53,7 +53,7 @@ _update_readme: _setup_poetry
 	COLUMNS=$(COLUMNS=$(tput cols) just run --help | head -n 1 | wc -c) just run --make-help-preview
 
 # Build project
-build: _setup_poetry
+build: _setup_poetry _update_readme
 	@poetry build
 
 # Install program using pipx

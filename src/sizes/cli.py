@@ -23,6 +23,22 @@ class CliArgs:
     file: bool
     ordered: bool
 
+    @property
+    def all(self) -> bool:
+        return self.file and self.directory
+
+    @all.setter
+    def all(self, value: bool) -> None:
+        self.file = value
+        self.directory = value
+
+    def __init__(self, directory: bool, file: bool, ordered: bool, all: bool) -> None:
+        self.directory = directory
+        self.file = file
+        self.ordered = ordered
+        if all:
+            self.all = all
+
 
 def get_args() -> CliArgs:
     if colourful:
@@ -49,6 +65,14 @@ def get_args() -> CliArgs:
         action="store_true",
         default=False,
         help="list directories",
+    )
+    type_options.add_argument(
+        "-a",
+        "--all",
+        dest="all",
+        action="store_true",
+        default=False,
+        help="list files and directories",
     )
 
     appearance_options = parser.add_argument_group("Appearance")

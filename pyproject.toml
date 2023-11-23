@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sizes"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Yuki Nagato <37764578+YUKI2eN3e@users.noreply.github.com>"]
 readme = "README.md"
@@ -15,6 +15,11 @@ sizes = "sizes.__main__:run"
 python = "^3.10"
 rich-argparse = { version = "^1.4.0", optional = true }
 argcomplete = { version = "^3.1.2", optional = true }
+
+[tool.poetry.extras]
+rich = ["rich-argparse"]
+completions = ["argcomplete"]
+all = ["rich-argparse", "argcomplete"]
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.1.6"
